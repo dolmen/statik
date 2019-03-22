@@ -47,6 +47,9 @@ type statikFS struct {
 // Register registers zip contents data, later used to initialize
 // the statik file system.
 func Register(data string) {
+	if len(zipData) > 0 {
+		panic(errors.New("static/fs: data registered multiple times"))
+	}
 	zipData = data
 }
 
